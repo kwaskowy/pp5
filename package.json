@@ -1,0 +1,13 @@
+{
+    "name": "simple-spa-app",
+    "version": "1.0.0",
+    "description": "Simple SPA with Node.js, Express, and Bootstrap",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+  
