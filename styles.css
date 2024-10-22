@@ -1,0 +1,11 @@
+.smallBreak{
+    height: 10px;
+}
+.bigBreak{
+    height: 30px;
+}
+#form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
