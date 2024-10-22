@@ -14,12 +14,13 @@ app.get('/', (req, res) => {
 
 // Formularz 1
 app.post('/form1', (req, res) => {
+  console.log(":)")
   const data = req.body.input1;
   res.json({ message: `Received from form 1: ${data}` });
 });
 
 app.get('/form1', (req, res) => {
-  res.json({ message: 'Form 1 GET response' });
+  res.json({ message: 'TEST TEST' });
 });
 
 // Formularz 2

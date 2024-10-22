@@ -14,7 +14,7 @@ function loadForm1() {
     document.getElementById('form1').addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(e.target);
-      fetch('/form1', {
+      fetch('http://localhost:3000/form1', {
         method: 'POST',
         body: formData
       })
