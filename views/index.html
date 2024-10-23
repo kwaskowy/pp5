@@ -3,20 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple SPA</title>
+  <title>Łapa weterynaria</title>
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- bootstrap i css-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
+  <!-- ikonka strony -->
+  <link rel="icon" href="/images/favicon.png" type="image/png">
 </head>
 <body>
-  <div class="container mt-5">
-    <h1>Gabinet weterynaryjny</h1>
+  <div class="container mt-5 text-center">
+    <img src="/images/logo.png" alt="Logo Gabinetu" class="mb-4" style="max-width: 200px;">
+    <h1 style="margin-top: -50px;">Gabinet weterynaryjny "Łapa"</h1>
     <div id="content">
-      <!-- Miejsce na dynamiczną treść -->
     </div>
+    <!-- buttony do formularzy -->
     <nav class="mt-4">
-      <button class="btn btn-primary" onclick="loadForm1()">Form 1</button>
-      <button class="btn btn-primary" onclick="loadForm2()">Form 2</button>
-      <button class="btn btn-primary" onclick="loadForm3()">Form 3</button>
+      <button class="btn btn-dark-green" onclick="loadForm1()">Dodaj zwierzę</button>
+      <button class="btn btn-dark-green" onclick="loadForm2()">Dodaj właściciela</button>
+      <button class="btn btn-dark-green" onclick="loadForm3()">Dodaj adres</button>
     </nav>
   </div>
 
