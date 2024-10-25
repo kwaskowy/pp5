@@ -44,6 +44,24 @@ function loadForm1() {
     })
       .then(response => response.json())
       .then(data => {
+        const animalName = formData.get('animalName');
+        const species = formData.get('species');
+        const breed = formData.get('breed');
+        const weight = formData.get('weight');
+        const birthdate = formData.get('birthdate');
+
+        const message = `
+        Wprowadzone dane:
+        Imię zwierzęcia: ${animalName}
+        Gatunek: ${species}
+        Rasa: ${breed}
+        Waga: ${weight} kg
+        Data urodzenia: ${birthdate}
+    `;
+
+    // Logowanie wiadomości do konsoli
+    console.log(message)
+        
         document.getElementById('response1').innerText = data.message;
       })
       .catch(error => {
@@ -109,6 +127,23 @@ function loadForm2() {
     })
       .then(response => response.json())
       .then(data => {
+        const ownerName = formData.get('ownerName');
+        const contactNumber = formData.get('contactNumber');
+        const email = formData.get('email');
+        const smsConsent = formData.get('smsConsent');
+        const notes = formData.get('notes');
+
+    // Tworzenie wiadomości do logowania
+    const message = `
+        Wprowadzone dane kontaktowe:
+        Imię i nazwisko właściciela: ${ownerName}
+        Numer kontaktowy: ${contactNumber}
+        Adres e-mail: ${email}
+        Zgoda na powiadomienia SMS: ${smsConsent}
+        Dodatkowe uwagi: ${notes}`;
+
+    // Logowanie wiadomości do konsoli
+        console.log(message);
         document.getElementById('response2').innerText = data.message;
       })
       .catch(error => {
@@ -158,6 +193,19 @@ function loadForm3() {
     })
       .then(response => response.json())
       .then(data => {
+        const address = formData.get('address');
+        const postalCode = formData.get('postalCode');
+        const city = formData.get('city');
+        const country = formData.get('country');
+
+        const message = `
+            Wprowadzone dane adresowe:
+            Adres: ${address}
+            Kod pocztowy: ${postalCode}
+            Miejscowość: ${city}
+            Kraj: ${country}`;
+        
+        console.log(message);
         document.getElementById('response3').innerText = data.message;
       })
       .catch(error => {
