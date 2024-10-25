@@ -14,9 +14,16 @@ app.get('/', (req, res) => {
 
 // Formularz 1
 app.post('/form1', (req, res) => {
-  console.log(":)")
-  const data = req.body.input1;
-  res.json({ message: `Received from form 1: ${data}` });
+
+  const data = req.body;
+  console.log(data);
+  const animalName = data.animalName;
+  const species = data.species;
+  const breed = data.breed;
+  const weight = data.weight;
+  const birthdate = data.birthdate;
+
+  res.json({ message: `Wprowadzone dane o zwierzęciu:\nImię: ${animalName}\nGatunek: ${species}\nRasa: ${breed}\nWaga: ${weight}\nData urodzenia: ${birthdate}` });
 });
 
 app.get('/form1', (req, res) => {
