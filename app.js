@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const multer = require('multer');
+const upload = multer();
 const port = 3000;
 
 // Konfiguracja middleware
@@ -13,16 +15,12 @@ app.get('/', (req, res) => {
 });
 
 // Formularz 1
-app.post('/form1', (req, res) => {
+app.post('/form1', upload.none(), (req, res) => {
 
   const data = req.body;
-  console.log(data);
-  const animalName = data.animalName;
-  const species = data.species;
-  const breed = data.breed;
-  const weight = data.weight;
-  const birthdate = data.birthdate;
+  const { animalName, species, breed, weight, birthdate } = data;
 
+  console.log(`Wprowadzone dane o zwierzęciu:\nImię: ${animalName}\nGatunek: ${species}\nRasa: ${breed}\nWaga: ${weight}\nData urodzenia: ${birthdate}`);  
   res.json({ message: `Wprowadzone dane o zwierzęciu:\nImię: ${animalName}\nGatunek: ${species}\nRasa: ${breed}\nWaga: ${weight}\nData urodzenia: ${birthdate}` });
 });
 
