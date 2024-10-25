@@ -146,6 +146,7 @@ function loadForm3() {
           <button type="submit" class="btn btn-dark-green" style="width: 30%;">Zapisz dane</button>
         </div>
       </form>
+      <div id="response3" class="mt-4"></div>
       <div id`;
 
   document.getElementById('form3').addEventListener('submit', function (e) {
