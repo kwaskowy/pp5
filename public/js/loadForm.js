@@ -49,7 +49,7 @@ function loadForm() {
               <input type="email" class="form-control" id="email" name="email" placeholder="Wpisz adres e-mail" required>
             </div>
             <div class="mb-3">
-              <label class="form-label">Czy właściciel zgadza się na otrzymywanie powiadomień SMS?</label>
+              <label class="form-label">Czy właściciel zgadza się na otrzymywanie powiadomień e-mail?</label>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="smsConsent" id="smsYes" value="yes" checked>
                 <label class="form-check-label" for="smsYes">Tak</label>
@@ -77,8 +77,8 @@ function loadForm() {
               <input type="text" class="form-control" id="city" name="city" placeholder="Wpisz miejscowość" required>
             </div>
             <div class="mb-3">
-              <label for="country" class="form-label">Kraj</label>
-              <input type="text" class="form-control" id="country" name="country" placeholder="Wpisz kraj" required>
+              <label for="country" class="form-label">Dodatkowe uwagi</label>
+              <textarea type="text" class="form-control" id="country" name="country"></textarea>
             </div>
           </div>
           

@@ -15,7 +15,9 @@ app.get('/', (req, res) => {
 // Formularz
 app.post('/submit', (req, res) => {
   console.log(":)")
-  const data = req.body.input1;
+  const data = req.body;
+
+  
   res.json({ message: `Received from form 1: ${data}` });
 });
 
