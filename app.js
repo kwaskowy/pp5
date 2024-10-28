@@ -35,7 +35,20 @@ app.get('/visits', (req, res) => {
   res.json({message: `dane dane pobrane`})
 });
 
-app.po
+app.get('/animals', async (req, res) => {
+  try {
+    // Fetch all animals from the database
+    const animals = await Animal.find();
+
+    // Respond with the data in JSON format
+    res.status(200).json({ message: "Zwierzęta pobrane pomyślnie!", data: animals });
+    console.log("Dane zostały pobrane pomyślnie");
+  } catch (error) {
+    console.error("Błąd pobierania zwierząt:", error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 
 
 
