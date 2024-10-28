@@ -98,10 +98,39 @@ function loadForm() {
     document.getElementById('multiStepForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(e.target);
-      fetch('http://localhost:3000/submit', {
-        method: 'POST',
-        body: formData
-      })
+      console.log("Zawartość formularza:");
+    for (const [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`);
+    animaljson = {
+      animal: {
+          animalName: formData.get('animalName'),
+          species: formData.get('species'),
+          breed: formData.get('breed'),
+          weight: parseFloat(formData.get('weight')), // Convert weight to float
+          birthdate: formData.get('birthdate')
+      },
+      owner: {
+          ownerName: formData.get('ownerName'),
+          contactNumber: formData.get('contactNumber'),
+          email: formData.get('email'),
+          smsConsent: formData.get('smsConsent') === 'yes' // Convert to boolean
+      },
+      address: {
+          street: formData.get('address'),
+          postalCode: formData.get('postalCode'),
+          city: formData.get('city'),
+          additionalNotes: formData.get('country') // Assuming 'country' contains additional notes
+      }
+  };
+  console.log(animaljson)
+  }
+  fetch('http://localhost:3000/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json' // Dodaj nagłówek informujący o formacie JSON
+    },
+    body: JSON.stringify(animaljson) // Konwersja obiektu na JSON
+  })
         .then(response => response.json())
         .then(data => {
           document.getElementById('response').innerText = data.message;
