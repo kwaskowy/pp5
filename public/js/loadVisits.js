@@ -18,22 +18,20 @@ async function loadVisits() {
       <table border="1" class="table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Animal Name</th>
-            <th>Species</th>
-            <th>Breed</th>
-            <th>Weight</th>
-            <th>Birthdate</th>
-            <th>Owner Name</th>
-            <th>Contact Number</th>
-            <th>Email</th>
-            <th>SMS Consent</th>
-            <th>Street</th>
-            <th>Postal Code</th>
-            <th>City</th>
-            <th>Additional Notes</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Imię zwierzęcia</th>
+            <th>Gatunek</th>
+            <th>Rasa</th>
+            <th>Waga</th>
+            <th>Data urodzenia</th>
+            <th>Imię i nazwisko właściciela</th>
+            <th>Numer kontaktowy</th>
+            <th>E-mail</th>
+            <th>Zgoda e-mail</th>
+            <th>Ulica i numer domu</th>
+            <th>Kod pocztowy</th>
+            <th>Miejscowość</th>
+            <th>Uwagi</th>
+            <th>Utworzono</th>
           </tr>
         </thead>
         <tbody>
@@ -45,7 +43,6 @@ async function loadVisits() {
 
       tableHTML += `
         <tr>
-          <td>${_id}</td>
           <td>${animal.animalName}</td>
           <td>${animal.species}</td>
           <td>${animal.breed}</td>
@@ -60,7 +57,6 @@ async function loadVisits() {
           <td>${address.city}</td>
           <td>${address.additionalNotes}</td>
           <td>${new Date(createdAt).toLocaleString()}</td>
-          <td>${new Date(updatedAt).toLocaleString()}</td>
         </tr>
       `;
     });

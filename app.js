@@ -1,11 +1,10 @@
 const express = require('express');
-const mongose = require('mongoose')
 const bodyParser = require('body-parser');
-const Animal = require('./models/animal.model.js')
-const { default: mongoose } = require('mongoose');
+const Animal = require('./models/animal.model.js');
+const dbConnect = require('./config/database.js');
 const app = express();
 const port = 3000;
-
+dbConnect();
 // Konfiguracja middleware
 app.use(express.static('public'));
 app.use(express.json());
@@ -30,19 +29,11 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-// Odczyt wizyt
-app.get('/visits', (req, res) => {
-  res.json({message: `dane dane pobrane`})
-});
-
+//pobranie wizyt
 app.get('/animals', async (req, res) => {
   try {
-    // Fetch all animals from the database
     const animals = await Animal.find();
-
-    // Respond with the data in JSON format
     res.status(200).json({ message: "Zwierzęta pobrane pomyślnie!", data: animals });
-    console.log("Dane zostały pobrane pomyślnie");
   } catch (error) {
     console.error("Błąd pobierania zwierząt:", error);
     res.status(500).json({ message: error.message });
@@ -50,15 +41,6 @@ app.get('/animals', async (req, res) => {
 });
 
 
-
-
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-mongoose.connect("mongodb+srv://pp5Admin:4vYYQA3c8QMakGMH@pp5db.zq4iw.mongodb.net/Node-API?retryWrites=true&w=majority&appName=pp5db")
-.then(() =>{
-  console.log("connected to database...")
-}).catch(() => {
-  console.log("not connected to db")
-})
