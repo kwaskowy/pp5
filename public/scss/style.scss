@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap";
+
+.light-theme {
+    --primary-color: #006400;
+    --primary-color-hover: #004d00;
+    --background-color: #f8f9fa;
+    --text-color: #000000;
+  }
+  
+  .dark-theme {
+    --primary-color: #333333;
+    --primary-color-hover: #1f1f1f;
+    --background-color: #1f1f1f;
+    --text-color: #ffffff;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .btn-dark-green {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+  
+    &:hover {
+      background-color: var(--primary-color-hover);
+    }
+  }
+  
