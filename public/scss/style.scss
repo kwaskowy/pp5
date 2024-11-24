@@ -1,4 +1,9 @@
 @import "../../node_modules/bootstrap/scss/bootstrap"; 
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 
 .light-theme {
   --primary-color: #006400;
