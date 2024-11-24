@@ -1,31 +1,77 @@
-@import "~bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap"; 
 
 .light-theme {
-    --primary-color: #006400;
-    --primary-color-hover: #004d00;
-    --background-color: #f8f9fa;
-    --text-color: #000000;
+  --primary-color: #006400;
+  --primary-color-hover: #004d00;
+  --background-color: #f8f9fa;
+  --text-color: #000000;
+
+  .table {
+    background-color: #ffffff;
+    color: #000000; 
   }
-  
-  .dark-theme {
-    --primary-color: #333333;
-    --primary-color-hover: #1f1f1f;
-    --background-color: #1f1f1f;
-    --text-color: #ffffff;
+
+  .table th,
+  .table td {
+    border-color: #dee2e6; 
   }
-  
-  body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
+
+
   .btn-dark-green {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--text-color);
-  
-    &:hover {
-      background-color: var(--primary-color-hover);
+    color: #ffffff; 
+  }
+}
+
+.dark-theme {
+  --primary-color: #333333;
+  --primary-color-hover: #1f1f1f;
+  --background-color: #1f1f1f;
+  --text-color: #ffffff;
+
+  .table {
+    background-color: var(--background-color); 
+    color: var(--text-color); 
+
+    th,
+    td {
+      background-color: var(--background-color); 
+      color: var(--text-color); 
+      border-color: #343a40; 
     }
   }
-  
+
+  .btn-dark-green {
+    color: var(--text-color);
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.btn-dark-green {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-color);
+
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+}
+
+.light-theme #logo {
+  content: url('/images/logo-dark.png');
+}
+
+.dark-theme #logo {
+  content: url('/images/logo-light.png');
+}
+
+.light-theme #themeButton {
+  content: url('/images/theme-switch-dark.png');
+}
+
+.dark-theme #themeButton {
+  content: url('/images/theme-switch-light.png');
+}
