@@ -54,7 +54,7 @@ async function loadVisits() {
         <th>Miejscowość</th>
         <th>Uwagi</th>
         <th>Utworzono</th>`,
-      deleteSection: `<th>usun</th>`
+      deleteSection: `<th>Usuń</th>`
     };
 
     rows = {
