@@ -39,6 +39,38 @@ app.get('/animals', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+// DELETE /animals/:id - Usuń zwierzę po id
+app.delete('/animals/:id', async (req, res) => {
+  try {
+    const { id } = req.params; // Pobierz id z URL
+
+    // Usuwanie zwierzęcia z bazy danych
+    const deletedAnimal = await Animal.findByIdAndDelete(id);
+
+    if (!deletedAnimal) {
+      return res.status(404).json({ 
+        success: false, 
+        message: "Zwierzę o podanym id nie zostało znalezione." 
+      });
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      message: "Zwierzę zostało pomyślnie usunięte.", 
+      data: deletedAnimal 
+    });
+    console.log("Animal deleted successfully:", deletedAnimal);
+  } catch (error) {
+    console.error("Błąd podczas usuwania zwierzęcia:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Błąd podczas usuwania zwierzęcia.", 
+      error: error.message 
+    });
+  }
+});
+
+
 
 
 app.listen(port, () => {

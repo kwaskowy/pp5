@@ -53,7 +53,8 @@ async function loadVisits() {
         <th>Kod pocztowy</th>
         <th>Miejscowość</th>
         <th>Uwagi</th>
-        <th>Utworzono</th>`
+        <th>Utworzono</th>`,
+      deleteSection: `<th>usun</th>`
     };
 
     rows = {
@@ -62,18 +63,24 @@ async function loadVisits() {
           <td>${animalData.animal.species}</td>
           <td>${animalData.animal.breed}</td>
           <td>${animalData.animal.weight}</td>
-          <td>${new Date(animalData.animal.birthdate).toLocaleDateString()}</td>`),
+          <td>${new Date(animalData.animal.birthdate).toLocaleDateString()}</td>
+          `),
       section2: animals.map(animalData => `
           <td>${animalData.owner.ownerName}</td>
           <td>${animalData.owner.contactNumber}</td>
           <td>${animalData.owner.email}</td>
-          <td>${animalData.owner.smsConsent ? "Yes" : "No"}</td>`),
+          <td>${animalData.owner.smsConsent ? "Yes" : "No"}</td>
+          `),
       section3: animals.map(animalData => `
           <td>${animalData.address.street}</td>
           <td>${animalData.address.postalCode}</td>
           <td>${animalData.address.city}</td>
           <td>${animalData.address.additionalNotes}</td>
-          <td>${new Date(animalData.createdAt).toLocaleString()}</td>`)
+          <td>${new Date(animalData.createdAt).toLocaleString()}</td>
+          `),
+      deleteSection: animals.map(animalData => `
+        <td><button class="btn btn-danger" onclick="usunWizyte('${animalData._id}')">Usuń</button></td>
+        `)
     };
 
     // Wyświetlenie początkowej tabeli z pustymi nagłówkami i wierszami
@@ -103,22 +110,53 @@ function updateTable() {
   // Tworzenie nagłówka na podstawie wybranych sekcji
   let activeHeaders = '';
   let activeRows = Array(rows.section1.length).fill('');
-
+  let notEmptyTable = false
   if (document.getElementById('btn-section1').classList.contains('btn-dark-green')) {
     activeHeaders += headers.section1;
     rows.section1.forEach((row, index) => activeRows[index] += row);
+    notEmptyTable = true;
   }
   if (document.getElementById('btn-section2').classList.contains('btn-dark-green')) {
     activeHeaders += headers.section2;
     rows.section2.forEach((row, index) => activeRows[index] += row);
+    notEmptyTable = true;
   }
   if (document.getElementById('btn-section3').classList.contains('btn-dark-green')) {
     activeHeaders += headers.section3;
     rows.section3.forEach((row, index) => activeRows[index] += row);
+    notEmptyTable = true;
+  }
+  if (notEmptyTable){
+    activeHeaders += headers.deleteSection;
+    rows.deleteSection.forEach((row, index) => activeRows[index] += row);
+    
   }
 
   header.innerHTML = activeHeaders;
   body.innerHTML = activeRows.map(row => `<tr>${row}</tr>`).join('');
+}
+async function usunWizyte(id) {
+  console.log(id)
+  
+  if (!confirm('Czy na pewno chcesz usunąć tę wizytę?')) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:3000/animals/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Błąd podczas usuwania wizyty');
+    }
+
+    alert('Wizyta została usunięta');
+    loadVisits(); // Odśwież dane tabeli po usunięciu
+  } catch (error) {
+    console.error('Error deleting visit:', error);
+    alert('Nie udało się usunąć wizyty.');
+  }
 }
 
 loadVisits(); // Initial load of visit data
