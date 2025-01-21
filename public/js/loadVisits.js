@@ -69,7 +69,7 @@ async function loadVisits() {
           <td>${animalData.owner.ownerName}</td>
           <td>${animalData.owner.contactNumber}</td>
           <td>${animalData.owner.email}</td>
-          <td>${animalData.owner.smsConsent ? "Yes" : "No"}</td>
+          <td>${animalData.owner.smsConsent ? "Tak" : "Nie"}</td>
           `),
       section3: animals.map(animalData => `
           <td>${animalData.address.street}</td>
